@@ -16,7 +16,16 @@ class Program2:
         self.customers = db['customers']
         self.orders = db['orders']
 
-    def create_customer(self, _id, name, num_goods_purchased):
+    def create_customer(self, _id: str, name: str, num_goods_purchased: int):
+        if not isinstance(_id, str):
+            raise TypeError('ID must be string')
+
+        if not isinstance(name, str):
+            raise TypeError('Name must be string')
+
+        if not isinstance(num_goods_purchased, int):
+            raise TypeError('Num goods purchased must be int')
+
         customer = {
             '_id': _id,
             'name': name,
@@ -24,7 +33,13 @@ class Program2:
         }
         self.customers.insert_one(customer)
 
-    def create_order(self, customer_id, num_goods_purchased):
+    def create_order(self, customer_id: str, num_goods_purchased: int):
+        if not isinstance(customer_id, str):
+            raise TypeError('ID must be string')
+
+        if not isinstance(num_goods_purchased, int):
+            raise TypeError('Num goods purchased must be int')
+
         order = {
             'customer_id': customer_id,
             'num_goods_purchased': num_goods_purchased
