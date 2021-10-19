@@ -36,10 +36,3 @@ class Program2:
         for customer in self.customers.find():
             return_list.append(customer)
         return return_list
-
-
-if __name__ == '__main__':
-    program2 = Program2()
-    program2.create_customer('2', 'Person2', 10)
-    print(program2.get_customers())
-
